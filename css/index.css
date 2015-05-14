@@ -103,7 +103,6 @@ input[name="query"]:focus {
 	text-align: center;
 }
 
-
 #results {
 	width: 100%;
 	margin: 0 auto;
@@ -116,22 +115,26 @@ input[name="query"]:focus {
 
 
 /* ANIMATIONS */
-.repeat-anim {
-	opacity: 1;
-	margin-left: 0;
-}
 .repeat-anim.ng-enter,
 .repeat-anim.ng-leave {
-	        transitions: all ease-in-out 5s;
-	-webkit-transitions: all ease-in-out 5s;
+	        transition: all ease-out 1s;
+	-webkit-transition: all ease-out 1s;
+}
+.repeat-anim.ng-enter-stagger,
+.repeat-anim.ng-leave-stagger {
+	transition-delay: 0.1s;
+	-webkit-transition-delay: 0.1s;
+	transition-duration: 0s;
+	-webkit-transition-duration: 0s;
+
 }
 .repeat-anim.ng-enter,
 .repeat-anim.ng-leave.ng-leave-active {
 	opacity: 0;
-	margin-left: -1em;
+	margin-top: 1em;
 }
 .repeat-anim.ng-enter.ng-enter-active,
 .repeat-anim.ng-leave {
 	opacity: 1;
-	margin-left: 0;
+	margin-top: 0;
 }
