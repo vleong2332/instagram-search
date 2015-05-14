@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="">
+<html lang="en" ng-app="IGSearch">
 <head>
 	<meta charset="UTF-8">
 	<title>Instagram Search</title>
@@ -11,25 +11,40 @@
   <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
 
-<body ng-controller="">
+<body ng-controller="searchCtrl">
+	<div class="main-container">
 
-	<img id="logo" src="img/ng-instagram.png" alt="instagram-search logo" />
+		<img id="logo" src="img/ng-instagram.png" alt="instagram-search logo" />
 
-	<form name="ig-search-form" novalidate ng-submit="">
-		<input name="query" type="text" placeholder="Enter keyword. Ex: cats, dogs" class="input" ng-model="" required />
-		<input name="submitBtn" type="submit" class="button" />
-	</form>
+		<form name="igSearchForm" novalidate ng-submit="searchPics()">
+			<input name="query" type="text" placeholder="Enter a tag to search" class="input" ng-model="query" required />
+			<input name="submitBtn" type="submit" class="button" value="Search" />
+		</form>
 
-	<div id="status-message" ng-Messages="">
-		<p ng-message="">The above field is required</p>
-		<p>Found {{ }} results for {{ }}</p>
-		<p>Searching Instagram for photos tagged with {{ }}</p>
+		<div id="error-message" ng-Messages="igSearchForm.$submitted && igSearchForm.$error">
+			<p ng-Message="required">The above field is required</p>
+		</div>
+
+		<div id="status-message">
+			<p ng-show="searchDone">Found {{ results.length }} results for {{ lastSearch }}</p>
+			<p ng-show="searching">Searching Instagram for photos tagged with {{ query }}</p>
+			<p ng-show="searchFail">Oops, something went wrong. Refresh the page and try again.</p>
+		</div>
+
+		<ul>
+			<li ng-repeat="entry in results">
+				<a href="{{ entry.link }}" target="_blank">
+					<img ng-src="{{ entry.images.low_resolution.url }}" alt="{{ entry.caption.text }}" width="{{ entry.images.low_resolution.width }}"/>
+				</a>
+			</li>
+		</ul>
+
 	</div>
-
 </body>
 
 <script type="text/javascript" src="js/vendor/angular.min.js"></script>
 <script type="text/javascript" src="js/vendor/angular-messages.js"></script>
+<script type="text/javascript" src="js/vendor/angular-animate.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 
 </html>
