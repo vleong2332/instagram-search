@@ -1,12 +1,65 @@
 /* Main CSS for instagram-search index.html */
 
 /* SITE-LEVEL STYLES */
+ul {
+	padding: 0;
+}
 li {
 	list-style-type: none;
+}
+body {
+	font-family: 'Lucida Sans Unicode', 'MS Sans Serif', sans-serif;
 }
 .main-container {
 	width: 320px;
 	margin: 0 auto;
+}
+.main-container::after {
+	content: "";
+	clear: both;
+}
+	@media screen and (min-width: 640px) {
+		.main-container {
+			width: 640px;
+		}
+	}
+	@media screen and (min-width: 960px) {
+		.main-container {
+			width: 960px;
+		}
+	}
+	@media screen and (min-width: 1280px) {
+		.main-container {
+			width: 1280px;
+		}
+	}
+	@media screen and (min-width: 1600px) {
+		.main-container {
+			width: 1600px;
+		}
+	}
+	@media screen and (min-width: 1920px) {
+		.main-container {
+			width: 1920px;
+		}
+	}
+.bad {
+	color: #D14648;
+}
+.neutral {
+	color: #555;
+}
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background: #FFF;
+}
+::-webkit-scrollbar-thumb {
+    background: #61D3F7;
+    -webkit-border-radius: 0.5ex;
+}
+::-webkit-scrollbar-corner {
+    background: #FFF;
 }
 
 /* PAGE-LEVEL STYLES */
@@ -14,4 +67,41 @@ li {
 	width: 320px;
 	margin: 0 auto;
 	display: block;
+}
+
+form[name="igSearchForm"] {
+	margin-top: 2em;
+	text-align: center;
+}
+input[name="submitBtn"],
+input[name="query"] {
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	outline: none;
+	border: 1px solid #A9A9AA;
+}
+input[name="query"] {
+	outline: none;
+	padding-left: 0.15em;
+	padding-right: 0.15em;
+	border-right: none;
+	border-radius: 5px 0 0 5px;
+	width: 220px;
+}
+input[name="submitBtn"] {
+	margin-left: -5px;
+	border-radius: 0 5px 5px 0;
+}
+input[name="query"]:focus {
+	background-color: #FFFFCC;
+}
+
+#error-message,
+#status-message {
+	text-align: center;
+}
+
+#results img {
+	margin: 0;
+	float: left;
 }

@@ -22,16 +22,16 @@
 		</form>
 
 		<div id="error-message" ng-Messages="igSearchForm.$submitted && igSearchForm.$error">
-			<p ng-Message="required">The above field is required</p>
+			<p ng-Message="required" class="bad">The above field is required</p>
 		</div>
 
 		<div id="status-message">
-			<p ng-show="searchDone">Found {{ results.length }} results for {{ lastSearch }}</p>
-			<p ng-show="searching">Searching Instagram for photos tagged with {{ query }}</p>
-			<p ng-show="searchFail">Oops, something went wrong. Refresh the page and try again.</p>
+			<p ng-show="searchDone" class="neutral">Found {{ results.length }} results for {{ lastSearch }}</p>
+			<p ng-show="searching" class="neutral">Searching Instagram for photos tagged with {{ query }}</p>
+			<p ng-show="searchFail" class="bad">Oops, something went wrong. Refresh the page and try again.</p>
 		</div>
 
-		<ul>
+		<ul id="results">
 			<li ng-repeat="entry in results">
 				<a href="{{ entry.link }}" target="_blank">
 					<img ng-src="{{ entry.images.low_resolution.url }}" alt="{{ entry.caption.text }}" width="{{ entry.images.low_resolution.width }}"/>

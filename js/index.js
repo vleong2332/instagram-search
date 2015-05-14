@@ -1,5 +1,5 @@
 // Angular script for instagram-search index.html
-var DEBUG = true;
+var DEBUG = false;
 
 var App = angular.module('IGSearch', ['ngMessages', 'ngAnimate']);
 
@@ -7,9 +7,9 @@ App.controller('searchCtrl', function($scope, $http, $q) {
 	$scope.resultCount = 0;
 	$scope.query = "";
 	$scope.results = [];
-	$scope.searchDone = false;
-	$scope.searching = false;
-	$scope.searchFail = false;
+	$scope.searchDone = DEBUG? true : false;
+	$scope.searching = DEBUG? true : false;
+	$scope.searchFail = DEBUG? true : false;
 	$scope.lastSearch = "";
 	//
 	$scope.searchPics = function() {
@@ -17,6 +17,8 @@ App.controller('searchCtrl', function($scope, $http, $q) {
 		if(DEBUG) console.log($scope.igSearchForm);
 		//
 		$scope.searching = true;
+		$scope.searchDone = false;
+		$scope.searchFail = false;
 		//
 		if ($scope.igSearchForm.$valid) {
 			$http({
@@ -32,14 +34,13 @@ App.controller('searchCtrl', function($scope, $http, $q) {
 					if(DEBUG) console.log(data);
 					//
 					$scope.results = data.data;
-					$scope.searching  = false;
 					$scope.searchDone = true;
 					$scope.lastSearch = $scope.query;
 					$scope.query      = "";
 					//
 					$scope.igSearchForm.$setPristine();
 					$scope.igSearchForm.$setUntouched();
-					document.getElementsByName('query')[0].focus();
+					queryFocus();
 				})
 				.error(function(data, status){
 					if(DEBUG) console.log(status);
@@ -47,7 +48,15 @@ App.controller('searchCtrl', function($scope, $http, $q) {
 					$scope.searchFail = true;
 				});
 		}
+		else {
+			queryFocus();
+		}
+		$scope.searching = false;
 	};
 });
 
-window.onload = document.getElementsByName('query')[0].focus();
+window.onload = queryFocus();
+
+function queryFocus() {
+	document.getElementsByName('query')[0].focus();
+}
