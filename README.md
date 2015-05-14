@@ -11,3 +11,8 @@ AngularJS web app to search pictures from instagram
 6. Your app must use at least one animation. It's up to you to decide where to put this.
 7. In case your calls to the server fail for some reason, the app should somehow alert the user.
 8. Users should be able to submit another search after one has completed.
+
+## To-do
+- Add animation for status and error messages
+- Add more contents when user scrolls down to the bottom
+- Add informative overlay when user hovers over an image
