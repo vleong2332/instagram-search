@@ -57,7 +57,7 @@ App.controller('searchCtrl', function($scope, $http, $q) {
 	};
 });
 
-window.onload = queryFocus();
+window.addEventListener('DOMContentLoaded', queryFocus, false);
 
 function queryFocus() {
 	document.getElementsByName('query')[0].focus();
