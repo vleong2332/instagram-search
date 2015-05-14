@@ -12,7 +12,7 @@
 </head>
 
 <body ng-controller="searchCtrl">
-	<div class="main-container">
+	<div class="main-container" class="clearfix">
 
 		<img id="logo" src="img/ng-instagram.png" alt="instagram-search logo" />
 
@@ -31,8 +31,8 @@
 			<p ng-show="searchFail" class="bad">Oops, something went wrong. Refresh the page and try again.</p>
 		</div>
 
-		<ul id="results">
-			<li ng-repeat="entry in results">
+		<ul id="results" class="clearfix">
+			<li class="clearfix repeat-anim" ng-repeat="entry in results">
 				<a href="{{ entry.link }}" target="_blank">
 					<img ng-src="{{ entry.images.low_resolution.url }}" alt="{{ entry.caption.text }}" width="{{ entry.images.low_resolution.width }}"/>
 				</a>

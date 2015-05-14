@@ -14,8 +14,9 @@ body {
 	width: 320px;
 	margin: 0 auto;
 }
-.main-container::after {
+.clearfix::after {
 	content: "";
+	display: block;
 	clear: both;
 }
 	@media screen and (min-width: 640px) {
@@ -62,11 +63,12 @@ body {
     background: #FFF;
 }
 
+
 /* PAGE-LEVEL STYLES */
 #logo {
 	width: 320px;
-	margin: 0 auto;
 	display: block;
+	margin: 0 auto;
 }
 
 form[name="igSearchForm"] {
@@ -80,17 +82,17 @@ input[name="query"] {
 	outline: none;
 	border: 1px solid #A9A9AA;
 }
+input[name="submitBtn"] {
+	margin-left: -5px;
+	border-radius: 0 5px 5px 0;
+}
 input[name="query"] {
-	outline: none;
+	width: 220px;
 	padding-left: 0.15em;
 	padding-right: 0.15em;
 	border-right: none;
 	border-radius: 5px 0 0 5px;
-	width: 220px;
-}
-input[name="submitBtn"] {
-	margin-left: -5px;
-	border-radius: 0 5px 5px 0;
+	outline: none;
 }
 input[name="query"]:focus {
 	background-color: #FFFFCC;
@@ -101,7 +103,35 @@ input[name="query"]:focus {
 	text-align: center;
 }
 
-#results img {
-	margin: 0;
+
+#results {
+	width: 100%;
+	margin: 0 auto;
+}
+#results li,
+#results li a,
+#results li a img {
 	float: left;
+}
+
+
+/* ANIMATIONS */
+.repeat-anim {
+	opacity: 1;
+	margin-left: 0;
+}
+.repeat-anim.ng-enter,
+.repeat-anim.ng-leave {
+	        transitions: all ease-in-out 5s;
+	-webkit-transitions: all ease-in-out 5s;
+}
+.repeat-anim.ng-enter,
+.repeat-anim.ng-leave.ng-leave-active {
+	opacity: 0;
+	margin-left: -1em;
+}
+.repeat-anim.ng-enter.ng-enter-active,
+.repeat-anim.ng-leave {
+	opacity: 1;
+	margin-left: 0;
 }
