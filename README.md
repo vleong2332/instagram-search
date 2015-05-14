@@ -16,3 +16,4 @@ AngularJS web app to search pictures from instagram
 - Add animation for status and error messages
 - Add more contents when user scrolls down to the bottom
 - Add informative overlay when user hovers over an image
+- Possibly implement $location and $routeProvider for sharing URL
