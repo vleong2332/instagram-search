@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="">
 <head>
 	<meta charset="UTF-8">
 	<title>Instagram Search</title>
@@ -11,8 +11,21 @@
   <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
 
-<body>
-	
+<body ng-controller="">
+
+	<img id="logo" src="img/ng-instagram.png" alt="instagram-search logo" />
+
+	<form name="ig-search-form" novalidate ng-submit="">
+		<input name="query" type="text" placeholder="Enter keyword. Ex: cats, dogs" class="input" ng-model="" required />
+		<input name="submitBtn" type="submit" class="button" />
+	</form>
+
+	<div id="status-message" ng-Messages="">
+		<p ng-message="">The above field is required</p>
+		<p>Found {{ }} results for {{ }}</p>
+		<p>Searching Instagram for photos tagged with {{ }}</p>
+	</div>
+
 </body>
 
 <script type="text/javascript" src="js/vendor/angular.min.js"></script>
